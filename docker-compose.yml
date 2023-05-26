@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  odoo-web:
+    image: odoo:16.0
+    depends_on:
+      - mydb
+    ports:
+      - "8072:8069"
+    volumes:
+      - ./odoo-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons 
+    environment:
+      - HOST=mydb
+      - USER=*****
+      - PASSWORD=*****
+  mydb:
+    image: postgres:15
+    ports:
+      - "5435:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=*****
+      - POSTGRES_USER=*****
+    volumes:
+      - ./odoo-db-data:/var/lib/postgresql/data
