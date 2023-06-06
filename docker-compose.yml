@@ -8,9 +8,9 @@ services:
       - "****:8069"
       - "****:8072"
     volumes:
-      - ./odoo-data:/var/lib/odoo
-      - ./config:/etc/odoo
-      - ./addons:/mnt/extra-addons 
+      - odoo-data:/var/lib/odoo
+      - odoo-config:/etc/odoo
+      - odoo-addons:/mnt/extra-addons 
     environment:
       - HOST=mydb
       - USER=*****
@@ -27,4 +27,6 @@ services:
       - odoo-db-data:/var/lib/postgresql/data
  volumes:
   odoo-data:
+  odoo-config:
+  odoo-addons:
   odoo-db-data:
